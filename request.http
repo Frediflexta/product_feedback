@@ -1,0 +1,42 @@
+### Login
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "email": "sylvia.mills31@hotmail.com",
+  "password": "Password@123#"
+}
+
+### GET all comments
+GET http://localhost:3000/api-v1/comments
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5NzE1ODFjLWIwMDktNGVmMy1iZDgxLTliMDYwNWJkYTllMSIsImVtYWlsIjoic3lsdmlhLm1pbGxzMzFAaG90bWFpbC5jb20iLCJpYXQiOjE3NjI4NDA0Mzh9.bD0xq2bgauL9I71ABGUZC3-syCGZ38Q7G5YLOXjBTsk
+Content-Type: application/json
+
+### GET a product by ID
+GET http://localhost:3000/api-v1/comments/88029fda-9687-4751-a9c6-9db8ab251f11
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5NzE1ODFjLWIwMDktNGVmMy1iZDgxLTliMDYwNWJkYTllMSIsImVtYWlsIjoic3lsdmlhLm1pbGxzMzFAaG90bWFpbC5jb20iLCJpYXQiOjE3NjI4NDA0Mzh9.bD0xq2bgauL9I71ABGUZC3-syCGZ38Q7G5YLOXjBTsk
+Content-Type: application/json
+
+### Create a new comment
+POST http://localhost:3000/api-v1/comments
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5NzE1ODFjLWIwMDktNGVmMy1iZDgxLTliMDYwNWJkYTllMSIsImVtYWlsIjoic3lsdmlhLm1pbGxzMzFAaG90bWFpbC5jb20iLCJpYXQiOjE3NjI4NDA0Mzh9.bD0xq2bgauL9I71ABGUZC3-syCGZ38Q7G5YLOXjBTsk
+Content-Type: application/json
+
+{
+  "productId": "ce1575d9-85d4-409e-b586-da27dd41f1d1",
+  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+}
+
+### Update a comment
+PUT http://localhost:3000/api-v1/comments/b6154d9c-78de-4ef4-86d0-6fb43969294e
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5NzE1ODFjLWIwMDktNGVmMy1iZDgxLTliMDYwNWJkYTllMSIsImVtYWlsIjoic3lsdmlhLm1pbGxzMzFAaG90bWFpbC5jb20iLCJpYXQiOjE3NjI4NDA0Mzh9.bD0xq2bgauL9I71ABGUZC3-syCGZ38Q7G5YLOXjBTsk
+Content-Type: application/json
+
+{
+  "content": "Updated comment content goes here again."
+}
+
+### Delete a comment
+DELETE http://localhost:3000/api-v1/comments/b6154d9c-78de-4ef4-86d0-6fb43969294e
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5NzE1ODFjLWIwMDktNGVmMy1iZDgxLTliMDYwNWJkYTllMSIsImVtYWlsIjoic3lsdmlhLm1pbGxzMzFAaG90bWFpbC5jb20iLCJpYXQiOjE3NjI4NDA0Mzh9.bD0xq2bgauL9I71ABGUZC3-syCGZ38Q7G5YLOXjBTsk
+Content-Type: application/json

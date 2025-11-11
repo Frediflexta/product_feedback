@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String           @id @default(uuid())
+  createdAt       DateTime         @default(now())
+  name            String
+  username        String           @unique
+  email           String           @unique
+  image           String?
+  comments        Comment[]
+  password        String?
+  productRequests ProductRequest[]
+}
+
+model ProductRequest {
+  id          String        @id @default(uuid())
+  createdAt   DateTime      @default(now())
+  title       String
+  description String
+  category    Category      @default(FEATURE)
+  status      RequestStatus @default(SUGGESTION)
+  upvotes     Int           @default(0)
+  createdBy   String // Foreign key to User
+
+  comments Comment[]
+  user     User      @relation(fields: [createdBy], references: [id])
+}
+
+model Comment {
+  id               String   @id @default(uuid())
+  createdAt        DateTime @default(now())
+  content          String
+  userId           String
+  productRequestId String?
+  parentId         String?
+  replyingTo       String? // stores the username being replied to (e.g. "hummingbird1")
+
+  user           User            @relation(fields: [userId], references: [id])
+  productRequest ProductRequest? @relation(fields: [productRequestId], references: [id], onDelete: Cascade)
+  parent         Comment?        @relation("CommentReplies", fields: [parentId], references: [id])
+  replies        Comment[]       @relation("CommentReplies")
+}
+
+enum Category {
+  FEATURE
+  ENHANCEMENT
+  BUG
+}
+
+enum RequestStatus {
+  SUGGESTION
+  PLANNED
+  IN_PROGRESS
+  LIVE
+}
