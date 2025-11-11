@@ -3,7 +3,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
 import router from './router';
-import { login } from '../src/controllers/users';
+import { login } from './controllers/users';
 import { bouncer } from './utils/auth';
 import { validateLogin, validationError } from './utils/validators';
 import { httpResponse } from './utils/httpResponse';
