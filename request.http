@@ -9,21 +9,20 @@ Content-Type: application/json
 
 ### GET all comments
 GET https://product-feedback-g3su.onrender.com/api-v1/comments
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhhZjgxN2JlLTdhZWQtNDAxOC05MWQxLWMxNTUzOTBiYmJhNyIsImVtYWlsIjoiZWxpYXMubXJhejg0QGhvdG1haWwuY29tIiwiaWF0IjoxNzYyODY3NDI3fQ.k9oYsOTupmgRKN3cynQgbJPa7MZ1Fj4yxNIJUlDXki4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhhZjgxN2JlLTdhZWQtNDAxOC05MWQxLWMxNTUzOTBiYmJhNyIsImVtYWlsIjoiZWxpYXMubXJhejg0QGhvdG1haWwuY29tIiwiaWF0IjoxNzYyOTQxODk0fQ.vPWy_K8Bd88hrQoeqtuBbJM-gklMiX1SsN91bLgvRZU
 Content-Type: application/json
 
 ### GET a product by ID
 GET http://localhost:3000/api-v1/comments/12eea6c6-c921-4ee1-b531-c99dd1ffe241
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhhZjgxN2JlLTdhZWQtNDAxOC05MWQxLWMxNTUzOTBiYmJhNyIsImVtYWlsIjoiZWxpYXMubXJhejg0QGhvdG1haWwuY29tIiwiaWF0IjoxNzYyODY3NDI3fQ.k9oYsOTupmgRKN3cynQgbJPa7MZ1Fj4yxNIJUlDXki4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhhZjgxN2JlLTdhZWQtNDAxOC05MWQxLWMxNTUzOTBiYmJhNyIsImVtYWlsIjoiZWxpYXMubXJhejg0QGhvdG1haWwuY29tIiwiaWF0IjoxNzYyOTQxODk0fQ.vPWy_K8Bd88hrQoeqtuBbJM-gklMiX1SsN91bLgvRZU
 Content-Type: application/json
 
 ### Create a new comment
-POST http://localhost:3000/api-v1/comments
+POST http://localhost:3000/api-v1/comments/5254016f-d521-4122-9e31-bf890f13aee5
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhhZjgxN2JlLTdhZWQtNDAxOC05MWQxLWMxNTUzOTBiYmJhNyIsImVtYWlsIjoiZWxpYXMubXJhejg0QGhvdG1haWwuY29tIiwiaWF0IjoxNzYyODY3NDI3fQ.k9oYsOTupmgRKN3cynQgbJPa7MZ1Fj4yxNIJUlDXki4
 Content-Type: application/json
 
 {
-  "productId": "ce1575d9-85d4-409e-b586-da27dd41f1d1",
   "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 }
 

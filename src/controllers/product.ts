@@ -112,6 +112,7 @@ export const getProducts = async (req: Request, res: Response) => {
 export const getOneProduct = async (req: Request, res: Response) => {
   try {
     const { commentId } = req.params;
+    console.log('Fetching product with commentId:', commentId);
 
     // Get current user from the authenticated request
     const currentUser = req.user

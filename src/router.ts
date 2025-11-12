@@ -27,7 +27,14 @@ import {
 const router = Router();
 
 // TODO: CRUD products
-router.post('/comments', validateNewComment(), validationError, createComment);
+router.post(
+  '/comments/:productId',
+  validateProductUrl(),
+  validateNewComment(),
+  validationError,
+  createComment
+);
+
 router.get('/comments', getProducts);
 
 // Get comments for a specific product

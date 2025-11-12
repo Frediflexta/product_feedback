@@ -4,7 +4,8 @@ import prisma from '../utils/db';
 
 export const createComment = async (req: Request, res: Response) => {
   try {
-    const { productId, content } = req.body;
+    const { productId } = req.params;
+    const { content } = req.body;
 
     const currentUser = req.user
       ? await prisma.user.findUnique({

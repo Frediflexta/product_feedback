@@ -16,11 +16,6 @@ export const validateLogin = () => [
 ];
 
 export const validateNewComment = () => [
-  body('productId')
-    .isString()
-    .notEmpty()
-    .trim()
-    .withMessage('Product ID must be provided'),
   body('content')
     .isString()
     .notEmpty()
