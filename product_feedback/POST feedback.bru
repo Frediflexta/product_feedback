@@ -1,0 +1,27 @@
+meta {
+  name: POST feedback
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://product-feedback-g3su.onrender.com/api-v1/comments
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhhZjgxN2JlLTdhZWQtNDAxOC05MWQxLWMxNTUzOTBiYmJhNyIsImVtYWlsIjoiZWxpYXMubXJhejg0QGhvdG1haWwuY29tIiwiaWF0IjoxNzYyODY3NDI3fQ.k9oYsOTupmgRKN3cynQgbJPa7MZ1Fj4yxNIJUlDXki4
+}
+
+body:json {
+  {
+    "productId":"9dcfc7eb-6856-43a7-aedc-59ecf1d0a724",
+    "content":"I like how this worked for me"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

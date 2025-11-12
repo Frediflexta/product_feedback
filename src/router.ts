@@ -39,7 +39,7 @@ router.get(
 );
 
 router.get(
-  '/comments/:id',
+  '/comments/:commentId',
   validateUrl(),
   validateUpdateProduct(),
   validationError,

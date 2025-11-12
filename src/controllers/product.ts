@@ -111,7 +111,7 @@ export const getProducts = async (req: Request, res: Response) => {
 
 export const getOneProduct = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const { commentId } = req.params;
 
     // Get current user from the authenticated request
     const currentUser = req.user
@@ -127,7 +127,7 @@ export const getOneProduct = async (req: Request, res: Response) => {
 
     // Fetch single product request with its comments and nested replies
     const productRequest = await prisma.productRequest.findUnique({
-      where: { id: id },
+      where: { id: commentId },
       include: {
         comments: {
           where: {

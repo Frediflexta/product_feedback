@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "product_feedback",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
