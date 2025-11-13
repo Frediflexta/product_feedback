@@ -5,7 +5,7 @@ import prisma from '../utils/db';
 export const createComment = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
-    const { content } = req.body;
+    const { title, content, category } = req.body;
 
     const currentUser = req.user
       ? await prisma.user.findUnique({
@@ -31,6 +31,8 @@ export const createComment = async (req: Request, res: Response) => {
 
     const newComment = await prisma.comment.create({
       data: {
+        title,
+        category,
         content,
         productRequestId: productId,
         userId: currentUser ? req.user.id : null,
@@ -82,7 +84,7 @@ export const createComment = async (req: Request, res: Response) => {
 export const updateComment = async (req: Request, res: Response) => {
   try {
     const { commentId } = req.params;
-    const { content } = req.body;
+    const { content, title, category, status } = req.body;
 
     console.log({ commentId, content });
 
@@ -101,7 +103,7 @@ export const updateComment = async (req: Request, res: Response) => {
 
     const updatedComment = await prisma.comment.update({
       where: { id: commentId },
-      data: { content },
+      data: { content, title, category, status },
       include: {
         user: {
           select: {

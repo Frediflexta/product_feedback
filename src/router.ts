@@ -52,6 +52,7 @@ router.get(
   validationError,
   getOneProduct
 );
+
 router.put(
   '/comments/:commentId',
   validateUrl(),

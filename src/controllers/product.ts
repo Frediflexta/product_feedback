@@ -57,14 +57,15 @@ export const getProducts = async (req: Request, res: Response) => {
     const transformedProducts = productRequests.map((product) => ({
       id: product.id,
       title: product.title,
-      category: product.category.toLowerCase(),
-      upvotes: product.upvotes,
-      status: product.status.toLowerCase().replace('_', '-'),
       description: product.description,
       ...(product.comments.length > 0 && {
         comments: product.comments.map((comment) => ({
           id: comment.id,
+          title: comment.title,
           content: comment.content,
+          category: comment.category,
+          status: comment.status,
+          upvotes: comment.upvotes,
           user: {
             image: comment.user.image || './assets/user-images/default.jpg',
             name: comment.user.name,
@@ -169,14 +170,14 @@ export const getOneProduct = async (req: Request, res: Response) => {
     const transformedProduct = {
       id: productRequest.id,
       title: productRequest.title,
-      category: productRequest.category.toLowerCase(),
-      upvotes: productRequest.upvotes,
-      status: productRequest.status.toLowerCase().replace('_', '-'),
       description: productRequest.description,
       ...(productRequest.comments.length > 0 && {
         comments: productRequest.comments.map((comment) => ({
           id: comment.id,
           content: comment.content,
+          category: comment.category.toLowerCase(),
+          upvotes: comment.upvotes,
+          status: comment.status.toLowerCase().replace('_', '-'),
           user: {
             image: comment.user.image || './assets/user-images/default.jpg',
             name: comment.user.name,

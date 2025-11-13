@@ -20,27 +20,27 @@ model User {
 }
 
 model ProductRequest {
-  id          String        @id @default(uuid())
-  createdAt   DateTime      @default(now())
+  id          String    @id @default(uuid())
+  createdAt   DateTime  @default(now())
   title       String
   description String
-  category    Category      @default(FEATURE)
-  status      RequestStatus @default(SUGGESTION)
-  upvotes     Int           @default(0)
   createdBy   String // Foreign key to User
-
-  comments Comment[]
-  user     User      @relation(fields: [createdBy], references: [id])
+  comments    Comment[]
+  user        User      @relation(fields: [createdBy], references: [id])
 }
 
 model Comment {
-  id               String   @id @default(uuid())
-  createdAt        DateTime @default(now())
+  id               String        @id @default(uuid())
+  createdAt        DateTime      @default(now())
   content          String
+  title            String?
+  category         Category?
   userId           String
   productRequestId String?
   parentId         String?
   replyingTo       String? // stores the username being replied to (e.g. "hummingbird1")
+  upvotes          Int?          @default(0)
+  status           RequestStatus @default(SUGGESTION)
 
   user           User            @relation(fields: [userId], references: [id])
   productRequest ProductRequest? @relation(fields: [productRequestId], references: [id], onDelete: Cascade)

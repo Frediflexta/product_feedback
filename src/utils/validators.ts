@@ -16,11 +16,21 @@ export const validateLogin = () => [
 ];
 
 export const validateNewComment = () => [
+  body('title')
+    .isString()
+    .notEmpty()
+    .trim()
+    .withMessage('Title must be provided'),
   body('content')
     .isString()
     .notEmpty()
     .trim()
     .withMessage('Content must be provided'),
+
+  body('category')
+    .optional()
+    .isIn(['UI', 'UX', 'ENHANCEMENT', 'BUG', 'FEATURE'])
+    .withMessage('Category must be one of UI, UX, ENHANCEMENT, BUG, FEATURE'),
 ];
 
 export const validateNewReply = () => [

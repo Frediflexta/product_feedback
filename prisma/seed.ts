@@ -68,9 +68,6 @@ async function createProductRequestsWithComments(users: any[]) {
         id: faker.string.uuid(),
         title: faker.hacker.phrase(),
         description: faker.lorem.paragraph({ min: 1, max: 3 }),
-        category: getRandomElement(categories),
-        status: getRandomElement(statuses),
-        upvotes: faker.number.int({ min: 1, max: 500 }),
         createdBy: randomCreator.id,
       },
     });
@@ -84,7 +81,11 @@ async function createProductRequestsWithComments(users: any[]) {
       const comment = await prisma.comment.create({
         data: {
           id: faker.string.uuid(),
+          title: faker.lorem.sentence(),
           content: faker.lorem.paragraph({ min: 1, max: 4 }),
+          category: getRandomElement(categories),
+          status: getRandomElement(statuses),
+          upvotes: faker.number.int({ min: 1, max: 500 }),
           userId: randomUser.id,
           productRequestId: productRequest.id,
         },
