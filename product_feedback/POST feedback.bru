@@ -5,20 +5,20 @@ meta {
 }
 
 post {
-  url: http://localhost:3000/api-v1/comments/5254016f-d521-4122-9e31-bf890f13aee5
+  url: {{baseUrl}}/comments/5254016f-d521-4122-9e31-bf890f13aee5
   body: json
   auth: bearer
 }
 
 auth:bearer {
-  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhhZjgxN2JlLTdhZWQtNDAxOC05MWQxLWMxNTUzOTBiYmJhNyIsImVtYWlsIjoiZWxpYXMubXJhejg0QGhvdG1haWwuY29tIiwiaWF0IjoxNzYzMDMxNjYwfQ.Tzs2kESye9rKm30RZW8q9HrdesGeqYDIl7NJMVhr2nA
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI0YTU5OWY2LTAxZjYtNGMyZi1iOWJhLTZjNDdmZGVkMzlhYiIsImVtYWlsIjoiYXNodG9uLmJyYWt1c0Bob3RtYWlsLmNvbSIsImlhdCI6MTc2MzAzNDYyMX0.TmInYma8xkEg2pK95dHwzRvpvEnboQRxmPttEJZHXIY
 }
 
 body:json {
   {
-    "title": "This is title",
+    "title": "Is title",
     "content":"I like how this worked for me",
-    "category": "BUG"
+    "category": "FEATURE"
   }
 }
 
