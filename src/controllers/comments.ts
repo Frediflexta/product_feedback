@@ -18,11 +18,6 @@ export const createComment = async (req: Request, res: Response) => {
         })
       : null;
 
-    // TODO: Add your database logic here to:
-    // 1. Verify the product exists
-    // 2. Get current user from auth middleware
-    // 3. Create the comment/reply in database
-    // 4. Return the updated product with comments
     const productExists = await prisma.productRequest.findUnique({
       where: { id: productId },
     });
@@ -74,10 +69,8 @@ export const createComment = async (req: Request, res: Response) => {
       newComment
     );
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Internal server error',
-    });
+    console.error('Error updating comment:', error);
+    return httpResponse(res, 500, false, 'Internal server error');
   }
 };
 
@@ -139,10 +132,8 @@ export const updateComment = async (req: Request, res: Response) => {
       updatedComment
     );
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Internal server error',
-    });
+    console.error('Error updating comment:', error);
+    return httpResponse(res, 500, false, 'Internal server error');
   }
 };
 
@@ -174,10 +165,8 @@ export const deleteComment = async (req: Request, res: Response) => {
 
     return httpResponse(res, 200, true, 'Comment deleted successfully');
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Internal server error',
-    });
+    console.error('Error deleting comment:', error);
+    return httpResponse(res, 500, false, 'Internal server error');
   }
 };
 
@@ -239,9 +228,6 @@ export const getCommentsForProduct = async (req: Request, res: Response) => {
     );
   } catch (error) {
     console.error('Error getting comments:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Internal server error',
-    });
+    return httpResponse(res, 500, false, 'Internal server error');
   }
 };

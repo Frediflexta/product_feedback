@@ -1,14 +1,11 @@
 import Router from 'express';
 import { getProducts, getOneProduct } from './controllers/product';
 import {
-  validateNewFeedback,
   validateNewComment,
   validateNewReply,
   validateUpdateProduct,
   validateUrl,
   validateReplyUrl,
-  validateCommentUrl,
-  validateProductUrl,
   validationError,
 } from './utils/validators';
 import {
@@ -26,10 +23,9 @@ import {
 
 const router = Router();
 
-// TODO: CRUD products
 router.post(
   '/comments/:productId',
-  validateProductUrl(),
+  validateUrl('productId'),
   validateNewComment(),
   validationError,
   createComment
@@ -40,14 +36,14 @@ router.get('/comments', getProducts);
 // Get comments for a specific product
 router.get(
   '/products/:productId/comments',
-  validateProductUrl(),
+  validateUrl('productId'),
   validationError,
   getCommentsForProduct
 );
 
 router.get(
   '/comments/:commentId',
-  validateUrl(),
+  validateUrl('commentId'),
   validateUpdateProduct(),
   validationError,
   getOneProduct
@@ -55,7 +51,7 @@ router.get(
 
 router.put(
   '/comments/:commentId',
-  validateUrl(),
+  validateUrl('commentId'),
   validateUpdateProduct(),
   validationError,
   updateComment
@@ -63,7 +59,7 @@ router.put(
 
 router.delete(
   '/comments/:commentId',
-  validateUrl(),
+  validateUrl('commentId'),
   validationError,
   deleteComment
 );
@@ -72,7 +68,7 @@ router.delete(
 router.post('/replies', validateNewReply(), validationError, createReply);
 router.get(
   '/comments/:commentId/replies',
-  validateCommentUrl(),
+  validateUrl('commentId'),
   validationError,
   getRepliesForComment
 );
@@ -89,14 +85,5 @@ router.delete(
   validationError,
   deleteReply
 );
-
-// TODO: CRUD feedback and feedback comments and upvote
-// router.post(
-//   '/products/:id/feedback',
-//   validateUrl(),
-//   validateNewFeedback(),
-//   validationError,
-//   createNewFeedback
-// );
 
 export default router;

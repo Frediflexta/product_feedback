@@ -74,7 +74,6 @@ async function createProductRequestsWithComments(users: any[]) {
     // Generate random number of comments (5-20)
     const numComments = randomBetween(5, 20);
 
-    const createdComments = [];
     for (let j = 0; j < numComments; j++) {
       const randomUser = getRandomElement(users);
 
@@ -90,8 +89,6 @@ async function createProductRequestsWithComments(users: any[]) {
           productRequestId: productRequest.id,
         },
       });
-
-      createdComments.push(comment);
 
       // Generate random number of replies (0-5) for this comment
       const numReplies = randomBetween(0, 5);
@@ -115,12 +112,12 @@ async function createProductRequestsWithComments(users: any[]) {
 }
 
 if (require.main === module) {
-  main()
-    .catch((e) => {
-      console.error('❌ Seed failed:', e);
-      process.exit(1);
-    })
-    .finally(async () => {
-      await prisma.$disconnect();
-    });
+  try {
+    await main();
+  } catch (e) {
+    console.error('❌ Seed failed:', e);
+    process.exit(1);
+  } finally {
+    await prisma.$disconnect();
+  }
 }

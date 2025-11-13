@@ -1,4 +1,4 @@
-import { body, check, param, validationResult } from 'express-validator';
+import { body, param, validationResult } from 'express-validator';
 
 export const validateSignUp = () => [
   body('username')
@@ -73,13 +73,13 @@ export const validateNewFeedback = () => [
     .withMessage('Status must be one of LIVE, PLANNED, IN_PROGRESS'),
 ];
 
-export const validateUrl = () => [
-  param('commentId')
+export const validateUrl = (id: string) => [
+  param(id)
     .notEmpty()
     .isString()
     .isUUID(4)
     .trim()
-    .withMessage('commentId must be a valid uuid'),
+    .withMessage(`${id} must be a valid uuid`),
 ];
 
 export const validateReplyUrl = () => [
@@ -89,24 +89,6 @@ export const validateReplyUrl = () => [
     .isUUID(4)
     .trim()
     .withMessage('replyId must be a valid uuid'),
-];
-
-export const validateCommentUrl = () => [
-  param('commentId')
-    .notEmpty()
-    .isString()
-    .isUUID(4)
-    .trim()
-    .withMessage('commentId must be a valid uuid'),
-];
-
-export const validateProductUrl = () => [
-  param('productId')
-    .notEmpty()
-    .isString()
-    .isUUID(4)
-    .trim()
-    .withMessage('productId must be a valid uuid'),
 ];
 
 export const validationError = (req, res, next) => {
