@@ -174,6 +174,7 @@ export const getOneProduct = async (req: Request, res: Response) => {
       ...(productRequest.comments.length > 0 && {
         comments: productRequest.comments.map((comment) => ({
           id: comment.id,
+          title: comment.title,
           content: comment.content,
           category: comment.category.toLowerCase(),
           upvotes: comment.upvotes,
